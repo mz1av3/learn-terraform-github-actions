@@ -28,10 +28,11 @@ provider "aws" {
 resource "random_pet" "sg" {}
 
 resource "aws_instance" "web" {
-  ami                    = "ami-830c94e3"
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.main.id
-  vpc_security_group_ids = [aws_security_group.web-sg.id]
+  ami                         = "ami-830c94e3"
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.main.id
+  vpc_security_group_ids      = [aws_security_group.web-sg.id]
+  associate_public_ip_address = true
 
   user_data = <<-EOF
               #!/bin/bash
@@ -55,7 +56,7 @@ resource "aws_vpc" "vpc" {
   cidr_block           = "10.0.0.0/20"
   instance_tenancy     = "default"
   enable_dns_support   = "true"
-  enable_dns_hostnames = "false"
+  enable_dns_hostnames = "true"
 
   tags = {
     Name = "vpc"
