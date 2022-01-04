@@ -12,10 +12,10 @@ terraform {
   required_version = ">= 1.1.0"
 
   cloud {
-    organization = "REPLACE_ME"
+    organization = "ACG-Terraform-Labs-mz1av3"
 
     workspaces {
-      name = "gh-actions-demo"
+      name = "demo-github-actions"
     }
   }
 }
@@ -24,8 +24,6 @@ terraform {
 provider "aws" {
   region = "us-west-2"
 }
-
-
 
 resource "random_pet" "sg" {}
 
