@@ -41,7 +41,7 @@ resource "aws_instance" "web" {
 
 resource "aws_security_group" "web-sg" {
   name = "${random_pet.sg.id}-sg"
-  vpc = aws_vpc.vpc.id
+  vpc  = aws_vpc.vpc.id
   ingress {
     from_port   = 8080
     to_port     = 8080
@@ -51,13 +51,13 @@ resource "aws_security_group" "web-sg" {
 }
 
 resource "aws_vpc" "vpc" {
-    cidr_block = "10.0.0.0/20"
-    instance_tenancy = "default"
-    enable_dns_support = "true"
-    enable_dns_hostnames = "false"
-    tags = {
-      Name = "vpc"
-    }
+  cidr_block           = "10.0.0.0/20"
+  instance_tenancy     = "default"
+  enable_dns_support   = "true"
+  enable_dns_hostnames = "false"
+  tags = {
+    Name = "vpc"
+  }
 }
 
 output "web-address" {
